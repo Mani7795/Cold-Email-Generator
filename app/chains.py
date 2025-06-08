@@ -8,7 +8,7 @@ from langchain_core.exceptions import OutputParserException
 
 load_dotenv()
 
-class Chain(self):
+class Chain:
     def __init__(self):
         self.llm = ChatGroq(temprature=0, groq_api_key = os.getenv("GROQ_API_KEY"), model="groq/groq-llama-3-70b-instruct")
 
@@ -48,6 +48,6 @@ class Chain(self):
         )
         chain_email = prompt_mail | self.llm
         res = chain_email.invoke({"job_description": str(job), "link_list": links})
-        return response
+        return res
 if __name__ == "__main__":
     print(os.getenv("GROQ_API_KEY"))
